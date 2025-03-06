@@ -1,0 +1,31 @@
+package YColecoes.test;
+
+import YColecoes.Domain.Jogos;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class IteratorTest01 {
+    public static void main(String[] args) {
+        List<Jogos> jogos = new ArrayList<>(6);
+        JogosByIdComparator jogosByIdComparator = new JogosByIdComparator();
+        jogos.add(new Jogos(123L, "Resident Evil 3: Nemesys", 3.50, 1));
+        jogos.add(new Jogos(546L, "Medal of Honor", 5.50, 2));
+        jogos.add(new Jogos(897L, "Contra", 5.50, 2));
+        jogos.add(new Jogos(357L, "Metal Slug", 8.50, 2));
+        jogos.add(new Jogos(549L, "Drive I", 6.50, 2));
+        jogos.add(new Jogos(146L, "GTA III", 1.50, 2));
+
+        Iterator<Jogos> jogosIterator = jogos.iterator();
+
+        while (jogosIterator.hasNext()) {
+            Jogos jogo = jogosIterator.next();
+            if(jogo.getQuantidade() == 2) {
+                jogosIterator.remove();
+            }
+        }
+
+        System.out.println(jogos);
+    }
+}
